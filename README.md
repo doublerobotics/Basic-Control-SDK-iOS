@@ -90,3 +90,7 @@ Example Usage (See DRViewController)
 	[theDouble drive:drive turn:turn];
 }
 ```
+
+Note
+====
+The SDK is experimental and cannot be submitted to the Apple App Store by any third-party developers. If you have any questions about the SDK or its usage, please contact us: info@doublerobotics.com
