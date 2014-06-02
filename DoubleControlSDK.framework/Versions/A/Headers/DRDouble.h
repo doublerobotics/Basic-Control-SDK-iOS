@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define kDoubleBasicSDKVersion @"0.1"
+#define kDoubleBasicSDKVersion @"0.2"
 
 typedef NS_ENUM(NSInteger, DRDriveDirection) {
 	kDRDriveDirectionStop = 0,
@@ -24,6 +24,7 @@ typedef NS_ENUM(NSInteger, DRDriveDirection) {
 - (void)doubleDidDisconnect:(DRDouble *)theDouble;
 - (void)doubleStatusDidUpdate:(DRDouble *)theDouble;
 - (void)doubleDriveShouldUpdate:(DRDouble *)theDouble;
+- (void)doubleTravelDataDidUpdate:(DRDouble *)theDouble;
 @end
 
 @interface DRDouble : NSObject {
@@ -36,6 +37,9 @@ typedef NS_ENUM(NSInteger, DRDriveDirection) {
 @property (nonatomic, readonly) float batteryPercent;
 @property (nonatomic, readonly) BOOL batteryIsFullyCharged;
 @property (nonatomic, readonly) NSString *firmwareVersion;
+@property (nonatomic, readonly) float leftEncoderDeltaInches;
+@property (nonatomic, readonly) float rightEncoderDeltaInches;
+@property (nonatomic, readonly) NSString *serial;
 
 #pragma mark - Singleton
 + (DRDouble *)sharedDouble;
@@ -48,5 +52,7 @@ typedef NS_ENUM(NSInteger, DRDriveDirection) {
 - (void)poleStop;
 - (void)deployKickstands;
 - (void)retractKickstands;
+- (void)startTravelData;
+- (void)stopTravelData;
 
 @end

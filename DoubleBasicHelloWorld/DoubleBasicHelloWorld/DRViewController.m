@@ -46,6 +46,14 @@
 	[[DRDouble sharedDouble] deployKickstands];
 }
 
+- (IBAction)startTravelData:(id)sender {
+	[[DRDouble sharedDouble] startTravelData];
+}
+
+- (IBAction)stopTravelData:(id)sender {
+	[[DRDouble sharedDouble] stopTravelData];
+}
+
 #pragma mark - DRDoubleDelegate
 
 - (void)doubleDidConnect:(DRDouble *)theDouble {
@@ -62,12 +70,19 @@
 	batteryPercentLabel.text = [NSString stringWithFormat:@"%f", [DRDouble sharedDouble].batteryPercent];
 	batteryIsFullyChargedLabel.text = [NSString stringWithFormat:@"%d", [DRDouble sharedDouble].batteryIsFullyCharged];
 	firmwareVersionLabel.text = [DRDouble sharedDouble].firmwareVersion;
+	serialLabel.text = [DRDouble sharedDouble].serial;
 }
 
 - (void)doubleDriveShouldUpdate:(DRDouble *)theDouble {
 	float drive = (driveForwardButton.highlighted) ? kDRDriveDirectionForward : ((driveBackwardButton.highlighted) ? kDRDriveDirectionBackward : kDRDriveDirectionStop);
 	float turn = (driveRightButton.highlighted) ? 1.0 : ((driveLeftButton.highlighted) ? -1.0 : 0.0);
 	[theDouble drive:drive turn:turn];
+}
+
+- (void)doubleTravelDataDidUpdate:(DRDouble *)theDouble {
+	NSLog(@"Left Encoder: %f, Right Encoder: %f", theDouble.leftEncoderDeltaInches, theDouble.rightEncoderDeltaInches);
+	leftEncoderDeltaLabel.text = [NSString stringWithFormat:@"%f", theDouble.leftEncoderDeltaInches];
+	rightEncoderDeltaLabel.text = [NSString stringWithFormat:@"%f", theDouble.rightEncoderDeltaInches];
 }
 
 @end

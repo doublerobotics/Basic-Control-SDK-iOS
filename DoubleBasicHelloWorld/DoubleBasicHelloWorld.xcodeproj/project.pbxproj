@@ -19,7 +19,7 @@
 		022C411C17AE279C00385168 /* DRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 022C411B17AE279C00385168 /* DRViewController.m */; };
 		022C411F17AE279C00385168 /* DRViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 022C411D17AE279C00385168 /* DRViewController.xib */; };
 		022C414F17AFA67700385168 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022C414E17AFA67700385168 /* ExternalAccessory.framework */; };
-		022C415617BA4BFD00385168 /* DoubleControlSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022C415517BA4BFD00385168 /* DoubleControlSDK.framework */; };
+		02EF8F6F18F9A8FC00916E15 /* DoubleControlSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02EF8F6E18F9A8FC00916E15 /* DoubleControlSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +40,7 @@
 		022C411B17AE279C00385168 /* DRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DRViewController.m; sourceTree = "<group>"; };
 		022C411E17AE279C00385168 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DRViewController.xib; sourceTree = "<group>"; };
 		022C414E17AFA67700385168 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
-		022C415517BA4BFD00385168 /* DoubleControlSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DoubleControlSDK.framework; path = ../DoubleControlSDK.framework; sourceTree = "<group>"; };
+		02EF8F6E18F9A8FC00916E15 /* DoubleControlSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DoubleControlSDK.framework; path = ../DoubleBasicExample/Products/DoubleControlSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,11 +48,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02EF8F6F18F9A8FC00916E15 /* DoubleControlSDK.framework in Frameworks */,
 				022C414F17AFA67700385168 /* ExternalAccessory.framework in Frameworks */,
 				022C410317AE279C00385168 /* UIKit.framework in Frameworks */,
 				022C410517AE279C00385168 /* Foundation.framework in Frameworks */,
 				022C410717AE279C00385168 /* CoreGraphics.framework in Frameworks */,
-				022C415617BA4BFD00385168 /* DoubleControlSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +79,7 @@
 		022C410117AE279C00385168 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				022C415517BA4BFD00385168 /* DoubleControlSDK.framework */,
+				02EF8F6E18F9A8FC00916E15 /* DoubleControlSDK.framework */,
 				022C414E17AFA67700385168 /* ExternalAccessory.framework */,
 				022C410217AE279C00385168 /* UIKit.framework */,
 				022C410417AE279C00385168 /* Foundation.framework */,
@@ -142,7 +142,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = DR;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Double Robotics, Inc.";
 			};
 			buildConfigurationList = 022C40FA17AE279C00385168 /* Build configuration list for PBXProject "DoubleBasicHelloWorld" */;

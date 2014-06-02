@@ -11,10 +11,13 @@
 @interface DRViewController : UIViewController {
 	IBOutlet UILabel *statusLabel;
 	IBOutlet UILabel *poleHeightPercentLabel;
+	IBOutlet UILabel *leftEncoderDeltaLabel;
+	IBOutlet UILabel *rightEncoderDeltaLabel;
 	IBOutlet UILabel *kickstandStateLabel;
 	IBOutlet UILabel *batteryPercentLabel;
 	IBOutlet UILabel *batteryIsFullyChargedLabel;
 	IBOutlet UILabel *firmwareVersionLabel;
+	IBOutlet UILabel *serialLabel;
 	IBOutlet UIButton *driveForwardButton;
 	IBOutlet UIButton *driveBackwardButton;
 	IBOutlet UIButton *driveLeftButton;
