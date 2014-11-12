@@ -18,6 +18,9 @@ DRDouble
 @property (nonatomic, readonly) float batteryPercent;
 @property (nonatomic, readonly) BOOL batteryIsFullyCharged;
 @property (nonatomic, readonly) NSString *firmwareVersion;
+@property (nonatomic, readonly) float leftEncoderDeltaInches;
+@property (nonatomic, readonly) float rightEncoderDeltaInches;
+@property (nonatomic, readonly) NSString *serial;
 
 - (void)drive:(DRDriveDirection)forwardBack turn:(float)leftRight; // leftRight is -1.0 to 1.0
 - (void)turnByDegrees:(float)theDegrees;
@@ -26,6 +29,8 @@ DRDouble
 - (void)poleStop;
 - (void)deployKickstands;
 - (void)retractKickstands;
+- (void)startTravelData;
+- (void)stopTravelData;
 ```
 
 DRDoubleDelegate
@@ -35,6 +40,7 @@ DRDoubleDelegate
 - (void)doubleDidDisconnect:(DRDouble *)theDouble;
 - (void)doubleStatusDidUpdate:(DRDouble *)theDouble;
 - (void)doubleDriveShouldUpdate:(DRDouble *)theDouble;
+- (void)doubleTravelDataDidUpdate:(DRDouble *)theDouble;
 ```
 
 Example Usage (See DRViewController)
@@ -72,6 +78,14 @@ Example Usage (See DRViewController)
 	[[DRDouble sharedDouble] deployKickstands];
 }
 
+- (IBAction)startTravelData:(id)sender {
+	[[DRDouble sharedDouble] startTravelData];
+}
+
+- (IBAction)stopTravelData:(id)sender {
+	[[DRDouble sharedDouble] stopTravelData];
+}
+
 #pragma mark - DRDoubleDelegate
 
 - (void)doubleDidConnect:(DRDouble *)theDouble {
@@ -95,8 +109,14 @@ Example Usage (See DRViewController)
 	float turn = (driveRightButton.highlighted) ? 1.0 : ((driveLeftButton.highlighted) ? -1.0 : 0.0);
 	[theDouble drive:drive turn:turn];
 }
+
+- (void)doubleTravelDataDidUpdate:(DRDouble *)theDouble {
+	leftEncoderLabel.text = [NSString stringWithFormat:@"%.02f", [leftEncoderLabel.text floatValue] + [DRDouble sharedDouble].leftEncoderDeltaInches];
+	rightEncoderLabel.text = [NSString stringWithFormat:@"%.02f", [rightEncoderLabel.text floatValue] + [DRDouble sharedDouble].rightEncoderDeltaInches];
+	NSLog(@"Left Encoder: %f, Right Encoder: %f", theDouble.leftEncoderDeltaInches, theDouble.rightEncoderDeltaInches);
+}
 ```
 
 Note
 ====
-The SDK is experimental and cannot be submitted to the Apple App Store by any third-party developers. If you have any questions about the SDK or its usage, please contact us: info@doublerobotics.com
+The SDK is experimental. If you have any questions about the SDK or its usage, please contact us: info@doublerobotics.com

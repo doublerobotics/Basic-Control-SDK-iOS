@@ -80,9 +80,9 @@
 }
 
 - (void)doubleTravelDataDidUpdate:(DRDouble *)theDouble {
+	leftEncoderLabel.text = [NSString stringWithFormat:@"%.02f", [leftEncoderLabel.text floatValue] + [DRDouble sharedDouble].leftEncoderDeltaInches];
+	rightEncoderLabel.text = [NSString stringWithFormat:@"%.02f", [rightEncoderLabel.text floatValue] + [DRDouble sharedDouble].rightEncoderDeltaInches];
 	NSLog(@"Left Encoder: %f, Right Encoder: %f", theDouble.leftEncoderDeltaInches, theDouble.rightEncoderDeltaInches);
-	leftEncoderDeltaLabel.text = [NSString stringWithFormat:@"%f", theDouble.leftEncoderDeltaInches];
-	rightEncoderDeltaLabel.text = [NSString stringWithFormat:@"%f", theDouble.rightEncoderDeltaInches];
 }
 
 @end

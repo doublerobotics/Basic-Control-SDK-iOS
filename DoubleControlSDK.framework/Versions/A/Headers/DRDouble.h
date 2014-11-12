@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define kDoubleBasicSDKVersion @"0.2"
+#define kDoubleBasicSDKVersion @"0.3"
 
 typedef NS_ENUM(NSInteger, DRDriveDirection) {
 	kDRDriveDirectionStop = 0,
@@ -54,5 +54,6 @@ typedef NS_ENUM(NSInteger, DRDriveDirection) {
 - (void)retractKickstands;
 - (void)startTravelData;
 - (void)stopTravelData;
+- (void)requestStatusUpdate;
 
 @end
