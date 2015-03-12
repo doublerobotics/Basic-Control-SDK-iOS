@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define kDoubleBasicSDKVersion @"0.3"
+#define kDoubleBasicSDKVersion @"0.4"
 
 typedef NS_ENUM(NSInteger, DRDriveDirection) {
 	kDRDriveDirectionStop = 0,
@@ -46,6 +46,7 @@ typedef NS_ENUM(NSInteger, DRDriveDirection) {
 
 #pragma mark - Controls
 - (void)drive:(DRDriveDirection)forwardBack turn:(float)leftRight; // leftRight is -1.0 to 1.0
+- (void)variableDrive:(float)forwardBack turn:(float)leftRight; // drive is -1.0 to 1.0, leftRight is -1.0 to 1.0 (0.0 is stop on both)
 - (void)turnByDegrees:(float)theDegrees;
 - (void)poleUp;
 - (void)poleDown;
