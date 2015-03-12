@@ -23,6 +23,7 @@ DRDouble
 @property (nonatomic, readonly) NSString *serial;
 
 - (void)drive:(DRDriveDirection)forwardBack turn:(float)leftRight; // leftRight is -1.0 to 1.0
+- (void)variableDrive:(float)forwardBack turn:(float)leftRight; // drive is -1.0 to 1.0, leftRight is -1.0 to 1.0 (0.0 is stop on both)
 - (void)turnByDegrees:(float)theDegrees;
 - (void)poleUp;
 - (void)poleDown;
