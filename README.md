@@ -3,11 +3,12 @@ Basic Control SDK iOS
 
 This SDK provides access to basic driving controls from a custom iOS application.
 
-1. Add DoubleControlSDK.framework to your app
-2. Add an entry in Info.plist for "Supported external accessory protocols" > Item 0 = com.doublerobotics.pancho
-3. #import &lt;DoubleControlSDK/DoubleControlSDK.h&gt;
-4. Add &lt;DRDoubleDelegate&gt;
-5. [DRDouble sharedDouble].delegate = self;
+1. Copy the DoubleControlSDK.framework into your app's folder
+2. Add DoubleControlSDK.framework to your app
+3. Add an entry in Info.plist for "Supported external accessory protocols" > Item 0 = com.doublerobotics.pancho
+4. #import &lt;DoubleControlSDK/DoubleControlSDK.h&gt;
+5. Add &lt;DRDoubleDelegate&gt;
+6. [DRDouble sharedDouble].delegate = self;
 
 DRDouble
 ========
