@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define kDoubleBasicSDKVersion @"0.5"
+#define kDoubleBasicSDKVersion @"0.6"
 
 typedef NS_ENUM(NSInteger, DRDriveDirection) {
 	kDRDriveDirectionStop = 0,
@@ -39,6 +39,9 @@ typedef NS_ENUM(NSInteger, DRDriveDirection) {
 @property (nonatomic, readonly) NSString *firmwareVersion;
 @property (nonatomic, readonly) float leftEncoderDeltaInches;
 @property (nonatomic, readonly) float rightEncoderDeltaInches;
+@property (nonatomic, readonly) float xDeltaInches;
+@property (nonatomic, readonly) float yDeltaInches;
+@property (nonatomic, readonly) float headingDeltaRadians;
 @property (nonatomic, readonly) NSString *serial;
 
 #pragma mark - Singleton
