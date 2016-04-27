@@ -46,6 +46,18 @@ DRDoubleDelegate
 - (void)doubleTravelDataDidUpdate:(DRDouble *)theDouble;
 ```
 
+Kickstand States
+================
+```
+typedef NS_ENUM(NSInteger, DRKickstandState) {
+    kDRKickstandStateUnknown = 0,
+    kDRKickstandStateDeployed = 1,
+    kDRKickstandStateRetracted = 2,
+    kDRKickstandStateDeployingInProgress = 3,
+    kDRKickstandStateRetractingInProgress = 4
+};
+```
+
 Example Usage (See DRViewController)
 ====================================
 ```
