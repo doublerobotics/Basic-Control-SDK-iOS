@@ -38,6 +38,9 @@ DRDouble
 - (void)retractKickstands;
 - (void)startTravelData;
 - (void)stopTravelData;
+- (void)requestStatusUpdate;
+- (void)headPowerOn;
+- (void)headPowerOff;
 ```
 
 DRDoubleDelegate
@@ -138,4 +141,4 @@ Example Usage (See DRViewController)
 
 Note
 ====
-The SDK is experimental. If you have any questions about the SDK or its usage, please contact us: info@doublerobotics.com
+If you have any questions about the SDK or its usage, please contact us: info@doublerobotics.com
