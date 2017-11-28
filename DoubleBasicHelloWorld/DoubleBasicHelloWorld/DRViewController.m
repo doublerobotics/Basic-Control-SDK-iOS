@@ -54,6 +54,14 @@
 	[[DRDouble sharedDouble] stopTravelData];
 }
 
+- (IBAction)headPowerOn:(id)sender {
+	[[DRDouble sharedDouble] headPowerOn];
+}
+
+- (IBAction)headPowerOff:(id)sender {
+	[[DRDouble sharedDouble] headPowerOff];
+}
+
 #pragma mark - DRDoubleDelegate
 
 - (void)doubleDidConnect:(DRDouble *)theDouble {

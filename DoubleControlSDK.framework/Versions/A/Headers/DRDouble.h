@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define kDoubleBasicSDKVersion @"0.8"
+#define kDoubleBasicSDKVersion @"0.8.1"
 
 typedef NS_ENUM(NSInteger, DRDriveDirection) {
 	kDRDriveDirectionStop = 0,
