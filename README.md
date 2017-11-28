@@ -38,6 +38,9 @@ DRDouble
 - (void)retractKickstands;
 - (void)startTravelData;
 - (void)stopTravelData;
+- (void)requestStatusUpdate;
+- (void)headPowerOn;
+- (void)headPowerOff;
 ```
 
 DRDoubleDelegate
