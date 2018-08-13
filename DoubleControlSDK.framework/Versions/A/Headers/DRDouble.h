@@ -1,4 +1,3 @@
-//
 //  DRDouble.h
 //  Double Basic Example
 //
@@ -6,60 +5,85 @@
 //  Copyright (c) 2013 Double Robotics, Inc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+import Foundation
 
-#define kDoubleBasicSDKVersion @"0.8.1"
-
-typedef NS_ENUM(NSInteger, DRDriveDirection) {
-	kDRDriveDirectionStop = 0,
-	kDRDriveDirectionForward = 1,
-	kDRDriveDirectionBackward = 2
-};
-
-@class DRDouble;
-
-@protocol DRDoubleDelegate <NSObject>
-@optional
-- (void)doubleDidConnect:(DRDouble *)theDouble;
-- (void)doubleDidDisconnect:(DRDouble *)theDouble;
-- (void)doubleStatusDidUpdate:(DRDouble *)theDouble;
-- (void)doubleDriveShouldUpdate:(DRDouble *)theDouble;
-- (void)doubleTravelDataDidUpdate:(DRDouble *)theDouble;
-@end
-
-@interface DRDouble : NSObject {
-
+let kDoubleBasicSDKVersion = "0.8.1"
+enum DRDriveDirection : Int {
+    case kDRDriveDirectionStop = 0
+    case kDRDriveDirectionForward = 1
+    case kDRDriveDirectionBackward = 2
 }
 
-@property (nonatomic, assign) id <DRDoubleDelegate> delegate;
-@property (nonatomic, readonly) float poleHeightPercent;
-@property (nonatomic, readonly) int kickstandState;
-@property (nonatomic, readonly) float batteryPercent;
-@property (nonatomic, readonly) BOOL batteryIsFullyCharged;
-@property (nonatomic, readonly) NSString *firmwareVersion;
-@property (nonatomic, readonly) float leftEncoderDeltaInches;
-@property (nonatomic, readonly) float rightEncoderDeltaInches;
-@property (nonatomic, readonly) float xDeltaInches;
-@property (nonatomic, readonly) float yDeltaInches;
-@property (nonatomic, readonly) float headingDeltaRadians;
-@property (nonatomic, readonly) NSString *serial;
 
-#pragma mark - Singleton
-+ (DRDouble *)sharedDouble;
+protocol DRDoubleDelegate: NSObjectProtocol {
+    func doubleDidConnect(_ theDouble: DRDouble?)
 
-#pragma mark - Controls
-- (void)drive:(DRDriveDirection)forwardBack turn:(float)leftRight; // leftRight is -1.0 to 1.0
-- (void)variableDrive:(float)forwardBack turn:(float)leftRight; // drive is -1.0 to 1.0, leftRight is -1.0 to 1.0 (0.0 is stop on both)
-- (void)turnByDegrees:(float)theDegrees;
-- (void)poleUp;
-- (void)poleDown;
-- (void)poleStop;
-- (void)deployKickstands;
-- (void)retractKickstands;
-- (void)startTravelData;
-- (void)stopTravelData;
-- (void)requestStatusUpdate;
-- (void)headPowerOn;
-- (void)headPowerOff;
+    func doubleDidDisconnect(_ theDouble: DRDouble?)
 
-@end
+    func doubleStatusDidUpdate(_ theDouble: DRDouble?)
+
+    func doubleDriveShouldUpdate(_ theDouble: DRDouble?)
+
+    func doubleTravelDataDidUpdate(_ theDouble: DRDouble?)
+}
+
+class DRDouble: NSObject {
+    weak var delegate: DRDoubleDelegate?
+    private(set) var poleHeightPercent: Float = 0.0
+    private(set) var kickstandState: Int = 0
+    private(set) var batteryPercent: Float = 0.0
+    private(set) var batteryIsFullyCharged = false
+    private(set) var firmwareVersion = ""
+    private(set) var leftEncoderDeltaInches: Float = 0.0
+    private(set) var rightEncoderDeltaInches: Float = 0.0
+    private(set) var xDeltaInches: Float = 0.0
+    private(set) var yDeltaInches: Float = 0.0
+    private(set) var headingDeltaRadians: Float = 0.0
+    private(set) var serial = ""
+
+// MARK: - Singleton
+    class func shared() -> DRDouble? {
+    }
+
+// MARK: - Controls
+    func drive(_ forwardBack: DRDriveDirection, turn leftRight: Float) {
+    }
+
+    // leftRight is -1.0 to 1.0
+    func variableDrive(_ forwardBack: Float, turn leftRight: Float) {
+    }
+
+    // drive is -1.0 to 1.0, leftRight is -1.0 to 1.0 (0.0 is stop on both)
+    func turn(byDegrees theDegrees: Float) {
+    }
+
+    func poleUp() {
+    }
+
+    func poleDown() {
+    }
+
+    func poleStop() {
+    }
+
+    func deployKickstands() {
+    }
+
+    func retractKickstands() {
+    }
+
+    func startTravelData() {
+    }
+
+    func stopTravelData() {
+    }
+
+    func requestStatusUpdate() {
+    }
+
+    func headPowerOn() {
+    }
+
+    func headPowerOff() {
+    }
+}
