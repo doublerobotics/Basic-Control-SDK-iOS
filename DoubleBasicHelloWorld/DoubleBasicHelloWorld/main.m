@@ -1,3 +1,4 @@
+//  Converted to Swift 4 by Swiftify v4.1.6792 - https://objectivec2swift.com/
 //
 //  main.m
 //  DoubleBasicHelloWorld
@@ -6,13 +7,10 @@
 //  Copyright (c) 2013 Double Robotics, Inc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+import UIKit
 
-#import "DRAppDelegate.h"
-
-int main(int argc, char *argv[])
-{
-	@autoreleasepool {
-	    return UIApplicationMain(argc, argv, nil, NSStringFromClass([DRAppDelegate class]));
-	}
+func main(argc: Int, argv: [Int8]?) -> Int {
+    autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass(DRAppDelegate.self.self))
+    }
 }
