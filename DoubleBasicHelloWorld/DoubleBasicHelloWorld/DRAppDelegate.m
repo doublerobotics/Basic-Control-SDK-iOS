@@ -24,3 +24,12 @@ class DRAppDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        // Override point for customization after application launch.
+        viewController = DRViewController(nibName: "DRViewController", bundle: nil)
+        window.rootViewController = viewController
+        window.makeKeyAndVisible()
+        return true
+    }
+}
