@@ -6,91 +6,81 @@
 //  Copyright (c) 2013 Double Robotics, Inc. All rights reserved.
 //
 
-#import "DRViewController.h"
-#import <DoubleControlSDK/DoubleControlSDK.h>
+import DoubleControlSDK
 
-@interface DRViewController () <DRDoubleDelegate>
-@end
+class DRViewController: DRDoubleDelegate {
+    func viewDidLoad() {
+        super.viewDidLoad()
+        DRDouble.shared().delegate = self
+        print("SDK Version: \(kDoubleBasicSDKVersion)")
+    }
 
-@implementation DRViewController
+    func shouldAutorotate(to toInterfaceOrientation: UIInterfaceOrientation) -> Bool {
+        return UIInterfaceOrientationIsPortrait(toInterfaceOrientation)
+    }
 
-- (void)viewDidLoad {
-	[super viewDidLoad];
-	[DRDouble sharedDouble].delegate = self;
-	NSLog(@"SDK Version: %@", kDoubleBasicSDKVersion);
+// MARK: - Actions
+    @IBAction func poleUp(_ sender: Any) {
+        DRDouble.shared().poleUp()
+    }
+
+    @IBAction func poleStop(_ sender: Any) {
+        DRDouble.shared().poleStop()
+    }
+
+    @IBAction func poleDown(_ sender: Any) {
+        DRDouble.shared().poleDown()
+    }
+
+    @IBAction func kickstandsRetract(_ sender: Any) {
+        DRDouble.shared().retractKickstands()
+    }
+
+    @IBAction func kickstandsDeploy(_ sender: Any) {
+        DRDouble.shared().deployKickstands()
+    }
+
+    @IBAction func startTravelData(_ sender: Any) {
+        DRDouble.shared().startTravelData()
+    }
+
+    @IBAction func stopTravelData(_ sender: Any) {
+        DRDouble.shared().stopTravelData()
+    }
+
+    @IBAction func headPower(on sender: Any) {
+        DRDouble.shared().headPowerOn()
+    }
+
+    @IBAction func headPowerOff(_ sender: Any) {
+        DRDouble.shared().headPowerOff()
+    }
+
+// MARK: - DRDoubleDelegate
+    func doubleDidConnect(_ theDouble: DRDouble?) {
+        statusLabel.text = "Connected"
+    }
+
+    func doubleDidDisconnect(_ theDouble: DRDouble?) {
+        statusLabel.text = "Not Connected"
+    }
+
+    func doubleStatusDidUpdate(_ theDouble: DRDouble?) {
+        poleHeightPercentLabel.text = "\(DRDouble.shared().poleHeightPercent)"
+        kickstandStateLabel.text = "\(DRDouble.shared().kickstandState)"
+        batteryPercentLabel.text = "\(DRDouble.shared().batteryPercent)"
+        batteryIsFullyChargedLabel.text = "\(DRDouble.shared().batteryIsFullyCharged)"
+		func doubleDriveShouldUpdate(_ theDouble: DRDouble?) {
+        let drive = (driveForwardButton.highlighted) ? kDRDriveDirectionForward : ((driveBackwardButton.highlighted) ? kDRDriveDirectionBackward : kDRDriveDirectionStop)
+        let turn: Float = (driveRightButton.highlighted) ? 1.0 : ((driveLeftButton.highlighted) ? -1.0 : 0.0)
+        theDouble?.drive(drive, turn: turn)
+    }
+
+    func doubleTravelDataDidUpdate(_ theDouble: DRDouble?) {
+        leftEncoderLabel.text = String(format: "%.02f", leftEncoderLabel.text + DRDouble.shared().leftEncoderDeltaInches)
+        rightEncoderLabel.text = String(format: "%.02f", rightEncoderLabel.text + DRDouble.shared().rightEncoderDeltaInches)
+        if let anInches = theDouble?.leftEncoderDeltaInches, let anInches1 = theDouble?.rightEncoderDeltaInches {
+            print("Left Encoder: \(anInches), Right Encoder: \(anInches1)")
+        }
+    }
 }
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-	return UIInterfaceOrientationIsPortrait(toInterfaceOrientation);
-}
-
-#pragma mark - Actions
-
-- (IBAction)poleUp:(id)sender {
-	[[DRDouble sharedDouble] poleUp];
-}
-
-- (IBAction)poleStop:(id)sender {
-	[[DRDouble sharedDouble] poleStop];
-}
-
-- (IBAction)poleDown:(id)sender {
-	[[DRDouble sharedDouble] poleDown];
-}
-
-- (IBAction)kickstandsRetract:(id)sender {
-	[[DRDouble sharedDouble] retractKickstands];
-}
-
-- (IBAction)kickstandsDeploy:(id)sender {
-	[[DRDouble sharedDouble] deployKickstands];
-}
-
-- (IBAction)startTravelData:(id)sender {
-	[[DRDouble sharedDouble] startTravelData];
-}
-
-- (IBAction)stopTravelData:(id)sender {
-	[[DRDouble sharedDouble] stopTravelData];
-}
-
-- (IBAction)headPowerOn:(id)sender {
-	[[DRDouble sharedDouble] headPowerOn];
-}
-
-- (IBAction)headPowerOff:(id)sender {
-	[[DRDouble sharedDouble] headPowerOff];
-}
-
-#pragma mark - DRDoubleDelegate
-
-- (void)doubleDidConnect:(DRDouble *)theDouble {
-	statusLabel.text = @"Connected";
-}
-
-- (void)doubleDidDisconnect:(DRDouble *)theDouble {
-	statusLabel.text = @"Not Connected";
-}
-
-- (void)doubleStatusDidUpdate:(DRDouble *)theDouble {
-	poleHeightPercentLabel.text = [NSString stringWithFormat:@"%f", [DRDouble sharedDouble].poleHeightPercent];
-	kickstandStateLabel.text = [NSString stringWithFormat:@"%d", [DRDouble sharedDouble].kickstandState];
-	batteryPercentLabel.text = [NSString stringWithFormat:@"%f", [DRDouble sharedDouble].batteryPercent];
-	batteryIsFullyChargedLabel.text = [NSString stringWithFormat:@"%d", [DRDouble sharedDouble].batteryIsFullyCharged];
-	firmwareVersionLabel.text = [DRDouble sharedDouble].firmwareVersion;
-	serialLabel.text = [DRDouble sharedDouble].serial;
-}
-
-- (void)doubleDriveShouldUpdate:(DRDouble *)theDouble {
-	float drive = (driveForwardButton.highlighted) ? kDRDriveDirectionForward : ((driveBackwardButton.highlighted) ? kDRDriveDirectionBackward : kDRDriveDirectionStop);
-	float turn = (driveRightButton.highlighted) ? 1.0 : ((driveLeftButton.highlighted) ? -1.0 : 0.0);
-	[theDouble drive:drive turn:turn];
-}
-
-- (void)doubleTravelDataDidUpdate:(DRDouble *)theDouble {
-	leftEncoderLabel.text = [NSString stringWithFormat:@"%.02f", [leftEncoderLabel.text floatValue] + [DRDouble sharedDouble].leftEncoderDeltaInches];
-	rightEncoderLabel.text = [NSString stringWithFormat:@"%.02f", [rightEncoderLabel.text floatValue] + [DRDouble sharedDouble].rightEncoderDeltaInches];
-	NSLog(@"Left Encoder: %f, Right Encoder: %f", theDouble.leftEncoderDeltaInches, theDouble.rightEncoderDeltaInches);
-}
-
-@end

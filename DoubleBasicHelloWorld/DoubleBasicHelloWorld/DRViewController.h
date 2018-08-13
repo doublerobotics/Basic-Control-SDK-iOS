@@ -6,22 +6,19 @@
 //  Copyright (c) 2013 Double Robotics, Inc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+import UIKit
 
-@interface DRViewController : UIViewController {
-	IBOutlet UILabel *statusLabel;
-	IBOutlet UILabel *poleHeightPercentLabel;
-	IBOutlet UILabel *kickstandStateLabel;
-	IBOutlet UILabel *batteryPercentLabel;
-	IBOutlet UILabel *batteryIsFullyChargedLabel;
-	IBOutlet UILabel *firmwareVersionLabel;
-	IBOutlet UILabel *serialLabel;
-	IBOutlet UILabel *leftEncoderLabel;
-	IBOutlet UILabel *rightEncoderLabel;
-	IBOutlet UIButton *driveForwardButton;
-	IBOutlet UIButton *driveBackwardButton;
-	IBOutlet UIButton *driveLeftButton;
-	IBOutlet UIButton *driveRightButton;
-}
-
-@end
+class DRViewController: UIViewController {
+    @IBOutlet var statusLabel: UILabel!
+    @IBOutlet var poleHeightPercentLabel: UILabel!
+    @IBOutlet var kickstandStateLabel: UILabel!
+    @IBOutlet var batteryPercentLabel: UILabel!
+    @IBOutlet var batteryIsFullyChargedLabel: UILabel!
+    @IBOutlet var firmwareVersionLabel: UILabel!
+    @IBOutlet var serialLabel: UILabel!
+    @IBOutlet var leftEncoderLabel: UILabel!
+    @IBOutlet var rightEncoderLabel: UILabel!
+    @IBOutlet var driveForwardButton: UIButton!
+    @IBOutlet var driveBackwardButton: UIButton!
+    @IBOutlet var driveLeftButton: UIButton!
+    @IBOutlet var driveRightButton: UIButton!
