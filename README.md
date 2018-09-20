@@ -22,6 +22,7 @@ DRDouble
 @property (nonatomic, readonly) float poleHeightPercent;
 @property (nonatomic, readonly) int kickstandState;
 @property (nonatomic, readonly) float batteryPercent;
+@property (nonatomic, readonly) BOOL batteryIsCharging;
 @property (nonatomic, readonly) BOOL batteryIsFullyCharged;
 @property (nonatomic, readonly) NSString *firmwareVersion;
 @property (nonatomic, readonly) float leftEncoderDeltaInches;

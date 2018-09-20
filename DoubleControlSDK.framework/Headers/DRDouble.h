@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define kDoubleBasicSDKVersion @"0.8.1"
+#define kDoubleBasicSDKVersion @"0.9.0"
 
 typedef NS_ENUM(NSInteger, DRDriveDirection) {
 	kDRDriveDirectionStop = 0,
@@ -35,6 +35,7 @@ typedef NS_ENUM(NSInteger, DRDriveDirection) {
 @property (nonatomic, readonly) float poleHeightPercent;
 @property (nonatomic, readonly) int kickstandState;
 @property (nonatomic, readonly) float batteryPercent;
+@property (nonatomic, readonly) BOOL batteryIsCharging;
 @property (nonatomic, readonly) BOOL batteryIsFullyCharged;
 @property (nonatomic, readonly) NSString *firmwareVersion;
 @property (nonatomic, readonly) float leftEncoderDeltaInches;
