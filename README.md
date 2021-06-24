@@ -11,10 +11,6 @@ This SDK provides access to basic driving controls from a custom iOS application
 6. Add &lt;DRDoubleDelegate&gt;
 7. [DRDouble sharedDouble].delegate = self;
 
-Double Robotics SDK FAQ
-=======================
-http://support.doublerobotics.com/customer/portal/articles/2534089
-
 DRDouble
 ========
 ```
@@ -142,4 +138,4 @@ Example Usage (See DRViewController)
 
 Note
 ====
-If you have any questions, please contact us: info@doublerobotics.com
+If you have any questions, please contact us: devteam@doublerobotics.com
